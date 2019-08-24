@@ -4,19 +4,21 @@ import { Typography, Switch, Icon, Spin, Input } from "antd";
 import { getAIRepodetails, getJeneretaRepoDetails, getSentimentRepoDetails } from '../actions/gitrepoAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-const dot = require('dotenv').config().parsed;
+import Octocatgif from '../assets/Octocatgif';
+import FooterB from './FooterB';
 
 const styles = (theme: any) => ({
   align: {
     zIndex: 3,
-    fontColor: "blue",
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     alignContent: "center",
     verticleAlign: "middle !important",
+    margin: 'auto',
     height: "100vh",
+    width: '100%',
     paddingTop: "10%"
   },
   switch: {
@@ -72,15 +74,17 @@ class Home extends React.PureComponent<any, any> {
           />
         </div>
         <div className={classes.align}>
-          <div style={{ position: 'fixed', width: '100%' }}>
+          <Octocatgif />
+          <div>
             <Search
               placeholder="Enter User Name"
               enterButton="Stalk"
               size="large"
-              onSearch={() => console.log(process.env, dot)}
+              onSearch={() => console.log(process.env)}
             />
           </div>
         </div>
+        <FooterB />
       </>
     );
   }
