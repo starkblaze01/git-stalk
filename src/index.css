@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Indie Flower", cursive !important;
+  font-family: 'Inconsolata', monospace !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
