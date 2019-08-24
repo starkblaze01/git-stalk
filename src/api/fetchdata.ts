@@ -1,7 +1,7 @@
 import { GIT_BASE_URL } from './baseURL';
 import { SENTIMENT_ANALYZER, AI_CODES, JENERETA } from './routes';
 import axios from 'axios';
-import { OAUTH_TOKEN } from './keys';
+import OAUTH_TOKEN from './keys';
 
 axios.defaults.headers.common['Authorization'] = OAUTH_TOKEN;
 
