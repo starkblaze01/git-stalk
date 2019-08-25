@@ -1,1 +1,1 @@
-export const GIT_BASE_URL = "https://api.github.com/repos/starkblaze01";
+export const GIT_BASE_URL = "https://api.github.com/";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import injectSheet from "react-jss";
-import { Typography, Switch, Icon, Spin, Input } from "antd";
-import { getAIRepodetails, getJeneretaRepoDetails, getSentimentRepoDetails } from '../actions/gitrepoAction';
+import { Typography, Switch, Icon, Input } from "antd";
+import { getSentimentRepoDetails } from '../actions/gitrepoAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Octocatgif from '../assets/Octocatgif';
@@ -52,15 +52,13 @@ class Home extends React.PureComponent<any, any> {
 
   async componentDidMount() {
     // await this.props.getJeneretaRepoDetails();
-    // await this.props.getAIRepodetails();
-    // await this.props.getSentimentRepoDetails();
   }
 
   state: any = {
     mode: false
   };
   render() {
-    const { classes, sentiment, ai, jenereta } = this.props;
+    const { classes } = this.props;
     const { Search } = Input;
     return (
       <>
@@ -74,6 +72,7 @@ class Home extends React.PureComponent<any, any> {
           />
         </div>
         <div className={classes.align}>
+          <Title>Check What's your peers are up to!</Title>
           <Octocatgif />
           <div>
             <Search
@@ -91,17 +90,11 @@ class Home extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = ({ gitrepoReducer }: { gitrepoReducer: any }) => ({
-  sentiment: gitrepoReducer.sentiment.data,
-  ai: gitrepoReducer.ai.data,
-  jenereta: gitrepoReducer.jenereta.data,
-  loadingSentiment: gitrepoReducer.loadingSentiment,
-  loadingAI: gitrepoReducer.loadingAI,
-  loadingJenereta: gitrepoReducer.loadingJenereta,
+  userDetails: gitrepoReducer.userDetails.data,
+  loadingUsers: gitrepoReducer.loadingUsers,
 });
 
 const mapDispatchToProps = (dispatch: any) => (bindActionCreators({
-  getJeneretaRepoDetails,
-  getAIRepodetails,
   getSentimentRepoDetails,
 }, dispatch))
 
