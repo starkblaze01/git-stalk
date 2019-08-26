@@ -1,7 +1,7 @@
 import * as React from "react";
 import injectSheet from "react-jss";
-import { Typography, Switch, Icon, Spin, Input } from "antd";
-import { getAIRepodetails, getJeneretaRepoDetails, getSentimentRepoDetails } from '../actions/gitrepoAction';
+import { Typography, Switch, Icon, Input } from "antd";
+import { getSentimentRepoDetails, setUserName } from '../actions/gitrepoAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Octocatgif from '../assets/Octocatgif';
@@ -9,7 +9,6 @@ import FooterB from './FooterB';
 
 const styles = (theme: any) => ({
   align: {
-    zIndex: 3,
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
@@ -52,15 +51,20 @@ class Home extends React.PureComponent<any, any> {
 
   async componentDidMount() {
     // await this.props.getJeneretaRepoDetails();
-    // await this.props.getAIRepodetails();
-    // await this.props.getSentimentRepoDetails();
+  }
+
+  async stalkUser(user: any) {
+    console.log(user);
+    console.log(this.props);
+    this.props.history.push(`/stalk/${user}`);
+    await this.props.setUserName(user);
   }
 
   state: any = {
     mode: false
   };
   render() {
-    const { classes, sentiment, ai, jenereta } = this.props;
+    const { classes } = this.props;
     const { Search } = Input;
     return (
       <>
@@ -74,13 +78,14 @@ class Home extends React.PureComponent<any, any> {
           />
         </div>
         <div className={classes.align}>
+          <Title>Check What's your peers are up to!</Title>
           <Octocatgif />
           <div>
             <Search
               placeholder="Enter User Name"
               enterButton="Stalk"
               size="large"
-              onSearch={() => console.log(process.env)}
+              onSearch={user => this.stalkUser(user)}
             />
           </div>
         </div>
@@ -91,18 +96,13 @@ class Home extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = ({ gitrepoReducer }: { gitrepoReducer: any }) => ({
-  sentiment: gitrepoReducer.sentiment.data,
-  ai: gitrepoReducer.ai.data,
-  jenereta: gitrepoReducer.jenereta.data,
-  loadingSentiment: gitrepoReducer.loadingSentiment,
-  loadingAI: gitrepoReducer.loadingAI,
-  loadingJenereta: gitrepoReducer.loadingJenereta,
+  userDetails: gitrepoReducer.userDetails.data,
+  loadingUsers: gitrepoReducer.loadingUsers,
 });
 
 const mapDispatchToProps = (dispatch: any) => (bindActionCreators({
-  getJeneretaRepoDetails,
-  getAIRepodetails,
   getSentimentRepoDetails,
+  setUserName,
 }, dispatch))
 
 const HomeStyled = injectSheet(styles)(Home);
