@@ -1,9 +1,10 @@
 import {
-    ENABLE_USER_LOADING, DISABLE_USER_LOADING, GET_USER_DETAILS
+    ENABLE_USER_LOADING, DISABLE_USER_LOADING, GET_USER_DETAILS, SET_USER_NAME
 } from '../actions/constants';
 const defaultState: any = {
     loadingUser: true,
     userDetails: '',
+    userName: '',
 }
 
 export default function (state: any = defaultState, action: any) {
@@ -24,6 +25,12 @@ export default function (state: any = defaultState, action: any) {
             return {
                 ...state,
                 userDetails: action.data,
+            }
+        }
+        case SET_USER_NAME: {
+            return {
+                ...state,
+                userName: action.data,
             }
         }
         default: {
