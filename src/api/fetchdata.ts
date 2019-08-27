@@ -5,10 +5,10 @@ import OAUTH_TOKEN from './keys';
 
 axios.defaults.headers.common['Authorization'] = OAUTH_TOKEN;
 
-export const fetchUserDetails = async () => {
+export const fetchUserDetails = async (userName: any) => {
     try {
         const res = await axios.get(
-            `${GIT_BASE_URL}${USER_DETAILS}`,
+            `${GIT_BASE_URL}${USER_DETAILS}/${userName}`,
         );
         return {
             isSuccess: true,

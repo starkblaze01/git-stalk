@@ -3,8 +3,8 @@ import {
 } from './constants';
 import { fetchUserDetails } from '../api/fetchdata';
 
-export const getSentimentRepoDetails = () => async (dispatch: any, getState: any) => {
-    const res = await fetchUserDetails();
+export const getUserDetails = (userName: any) => async (dispatch: any, getState: any) => {
+    const res = await fetchUserDetails(userName);
     dispatch({
         type: ENABLE_USER_LOADING,
     });
@@ -23,3 +23,4 @@ export const setUserName = (user: any) => async (dispatch: any, getState: any) =
         data: user,
     });
 }
+// export const

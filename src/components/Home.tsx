@@ -1,11 +1,10 @@
 import * as React from "react";
 import injectSheet from "react-jss";
 import { Typography, Switch, Icon, Input } from "antd";
-import { getSentimentRepoDetails, setUserName } from '../actions/gitrepoAction';
+import { getUserDetails, setUserName } from '../actions/gitrepoAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Octocatgif from '../assets/Octocatgif';
-import FooterB from './FooterB';
 
 const styles = (theme: any) => ({
   align: {
@@ -58,6 +57,7 @@ class Home extends React.PureComponent<any, any> {
     console.log(this.props);
     this.props.history.push(`/stalk/${user}`);
     await this.props.setUserName(user);
+    await this.props.getUserDetails(user);
   }
 
   state: any = {
@@ -89,19 +89,18 @@ class Home extends React.PureComponent<any, any> {
             />
           </div>
         </div>
-        <FooterB />
       </>
     );
   }
 }
 
 const mapStateToProps = ({ gitrepoReducer }: { gitrepoReducer: any }) => ({
-  userDetails: gitrepoReducer.userDetails.data,
+  userDetails: gitrepoReducer.userDetails,
   loadingUsers: gitrepoReducer.loadingUsers,
 });
 
 const mapDispatchToProps = (dispatch: any) => (bindActionCreators({
-  getSentimentRepoDetails,
+  getUserDetails,
   setUserName,
 }, dispatch))
 
