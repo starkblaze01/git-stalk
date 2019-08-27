@@ -5,7 +5,6 @@ import { getUserDetails, setUserName } from '../actions/gitrepoAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Octocatgif from '../assets/Octocatgif';
-import FooterB from './FooterB';
 
 const styles = (theme: any) => ({
   align: {
@@ -90,7 +89,6 @@ class Home extends React.PureComponent<any, any> {
             />
           </div>
         </div>
-        <FooterB />
       </>
     );
   }

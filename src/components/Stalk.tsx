@@ -1,7 +1,7 @@
 import * as React from 'react';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
-import { setUserName } from '../actions/gitrepoAction';
+import { setUserName, getUserDetails } from '../actions/gitrepoAction';
 import { bindActionCreators } from 'redux';
 import { Card, Skeleton, Icon } from 'antd';
 
@@ -16,7 +16,7 @@ const styles = (theme: any) => ({
         margin: 'auto',
         height: "100vh",
         width: '100%',
-        paddingTop: "10%"
+        paddingTop: "5%"
     },
 });
 
@@ -28,23 +28,34 @@ class Stalk extends React.PureComponent<any, any> {
     async componentDidMount() {
         const user = this.props.match.params.userId
         console.log(user);
-        await user && user.length ? this.props.setUserName(user) : console.log(user);
+        if (user && user.length) {
+            await this.props.setUserName(user)
+            await this.props.getUserDetails(user)
+
+        }
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, userDetails: { data } } = this.props;
+        console.log(data)
         return (
             <>
                 <div className={classes.align}>
-                    <Card
+                    {data ? <Card
                         hoverable
                         style={{ width: 300 }}
-                        // cover={}
+                        cover={<img src={
+                            data.avatar_url} alt="avatar" />}
                         loading={this.props.loadingUsers}
+                        onClick={() => window.location.href = `${data.html_url}`}
                     >
-                        {this.props.userName}
-
-                    </Card>
+                        <Meta title={`${data.name}`} />
+                        <div>{this.props.userName}</div>
+                        <div>bio:{data.bio}</div>
+                        <div>Followers:{data.followers}</div>
+                        <div>Following:{data.following}</div>
+                        <div>Public Repos:{data.public_repos}</div>
+                    </Card> : ''}
                 </div>
             </>
         );
@@ -58,6 +69,7 @@ const mapStateToProps = ({ gitrepoReducer }: { gitrepoReducer: any }) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => (bindActionCreators({
+    getUserDetails,
     setUserName,
 }, dispatch))
 
