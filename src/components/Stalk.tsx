@@ -4,26 +4,54 @@ import { connect } from 'react-redux';
 import { setUserName, getUserDetails } from '../actions/gitrepoAction';
 import { bindActionCreators } from 'redux';
 import { Card, Skeleton, Icon } from 'antd';
+import { fetchEvents, fetchfollowers, fetchfollowing, fetchOrgList } from '../api/fetchdata';
 
 const styles = (theme: any) => ({
     align: {
         textAlign: "center",
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        // alignItems: "center",
         alignContent: "center",
-        verticleAlign: "middle !important",
-        margin: 'auto',
+        // verticleAlign: "middle !important",
+        margin: '100px',
         height: "100vh",
-        width: '100%',
-        paddingTop: "5%"
+        // width: '100%',
+        paddingTop: "10px"
     },
 });
 
 const { Meta } = Card;
+const tablist: any = [
+    {
+        key: 'events',
+        tab: 'Events'
+    },
+    {
+        key: 'organizations',
+        tab: 'Organizations',
+    },
+    {
+        key: 'followers',
+        tab: 'Followers'
+    },
+    {
+        key: 'following',
+        tab: 'Following',
+    },
+]
+
+const tabListData: any = {
+    events: <div>ss</div>,
+    organizations: <div>aa</div>,
+    followers: <div>dd</div>,
+    following: <div>cc</div>,
+}
+
 class Stalk extends React.PureComponent<any, any> {
     state: any = {
-
+        key: 'events',
     }
     async componentDidMount() {
         const user = this.props.match.params.userId
@@ -31,9 +59,13 @@ class Stalk extends React.PureComponent<any, any> {
         if (user && user.length) {
             await this.props.setUserName(user)
             await this.props.getUserDetails(user)
-
+            await fetchfollowers(user)
         }
     }
+    onTabChange = (key: any, type: any) => {
+        console.log(key, type);
+        this.setState({ [type]: key });
+    };
 
     render() {
         const { classes, userDetails: { data } } = this.props;
@@ -51,11 +83,21 @@ class Stalk extends React.PureComponent<any, any> {
                     >
                         <Meta title={`${data.name}`} />
                         <div>{this.props.userName}</div>
-                        <div>bio:{data.bio}</div>
+                        <hr />
                         <div>Followers:{data.followers}</div>
                         <div>Following:{data.following}</div>
                         <div>Public Repos:{data.public_repos}</div>
+                        <div>Bio:{data.bio}</div>
                     </Card> : ''}
+                    <Card
+                        style={{ width: '100%' }}
+                        tabList={tablist}
+                        activeTabKey={this.state.noTitleKey}
+                        onTabChange={key => {
+                            this.onTabChange(key, 'key');
+                        }}
+                    >{tabListData[this.state.key]}
+                    </Card>
                 </div>
             </>
         );
