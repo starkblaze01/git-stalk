@@ -137,26 +137,81 @@ class Stalk extends React.PureComponent<any, any> {
             }) : null
         const events = this.props.events ?
             this.props.events.map((el: any) => {
-                return ((el.type === 'PullRequestEvent' || 'WatchEvent' || 'IssuesEvent' || 'IssueCommentEvent'
-                    || 'PushEvent' || 'CreateEvent' || 'PullRequestReviewCommentEvent') ?
-                    <a href={`https://github.com/${el.login}`} key={el.id}><Card.Grid
-                        style={{
-                            overflow: 'hidden',
-                            marginLeft: '2%', marginBottom: '2%'
-                        }}
-                    >
-                        {el.type}
+                let event = null;
+                if (el.type === 'IssueCommentEvent') {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    ><Icon type="edit" theme="twoTone" /> Commented on the Issue in the Repository: <a href={`${el.payload.issue.html_url}`}>
+                            {el.repo.name}</a>
                     </Card.Grid>
-                    </a>
+                } else if (el.type === 'WatchEvent') {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    > Starred<Icon type="star" theme="twoTone" twoToneColor="#ffd761" /> the Repository: <a href={`https://github.com/${el.repo.name}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                } else if (el.type === 'IssuesEvent' && (el.payload.action === 'opened' ||
+                    el.payload.action === 'closed')) {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    > {el.payload.action === 'opened'
+                        ? <><Icon type="folder-open" theme="twoTone" /> Opened an Issue in the Repository: </> : <><Icon type="close-circle" theme="twoTone" twoToneColor="red" /> Closed the Issue in the Repository: </>
+                        }<a href={`${el.payload.issue.html_url}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                } else if (el.type === 'PullRequestEvent' && (el.payload.action === 'opened' ||
+                    el.payload.action === 'closed')) {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    > {el.payload.action === 'opened'
+                        ? <><Icon type="folder-open" theme="twoTone" /> Opened a Pull Request in the Repository: </> : <><Icon type="close-circle" theme="twoTone" twoToneColor="red" /> Closed a Pull Request in the Repository: </>
+                        }<a href={`${el.payload.pull_request.html_url}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                } else if (el.type === 'PushEvent') {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    ><Icon type="edit" theme="twoTone" /> Pushed a commit in the Repository: <a href={`https://github.com/${el.repo.name}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                } else if (el.type === 'CreateEvent') {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    ><Icon type="plus-square" theme="twoTone" twoToneColor="#42ff29" /> Created a Repository: <a href={`https://github.com/${el.repo.name}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                } else if (el.type === 'PullRequestReviewEvent') {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    ><Icon type="eye" theme="twoTone" twoToneColor="#e894ff" /> Reviewed a Pull Request in the Repository: <a href={`${el.payload.pull_request.html_url}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                } else if (el.type === 'PullRequestReviewCommentEvent') {
+                    event = <Card.Grid
+                        key={el.id}
+                        style={{ overflow: 'hidden', width: '100%' }}
+                    ><Icon type="edit" theme="twoTone" /> Commented on the Pull Request in the Repository: <a href={`${el.payload.pull_request.html_url}`}>
+                            {el.repo.name}</a>
+                    </Card.Grid>
+                }
+                return ((el.type === 'PullRequestEvent' || 'WatchEvent' || 'IssuesEvent' || 'IssueCommentEvent'
+                    || 'PushEvent' || 'CreateEvent' || 'PullRequestReviewCommentEvent' || 'PullRequestReviewEvent') ?
+                    <>{event}</>
                     : null);
             }) : null
         const tabListData: any = {
-            events: <div>{events}</div>,
+            events: <>{events}</>,
             organizations: <>{organization}</>,
             followers: <>{follower}</>,
             following: <>{following}</>,
         }
-        console.log(this.props.events)
         const { classes, userDetails: { data } } = this.props;
         return (
             <>
