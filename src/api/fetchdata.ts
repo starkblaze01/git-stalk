@@ -18,12 +18,11 @@ export const fetchUserDetails = async (userName: any) => {
     }
 }
 
-export const fetchfollowers = async (userName: any) => {
+export const fetchFollowers = async (userName: any) => {
     try {
         const res = await axios.get(
             `${GIT_BASE_URL}${USER_DETAILS}/${userName}${FOLLWERS}`
         );
-        console.log(res)
         return {
             isSuccess: true,
             data: res.data
@@ -32,12 +31,11 @@ export const fetchfollowers = async (userName: any) => {
         console.log(err);
     }
 }
-export const fetchfollowing = async (userName: any) => {
+export const fetchFollowing = async (userName: any) => {
     try {
         const res = await axios.get(
             `${GIT_BASE_URL}${USER_DETAILS}/${userName}${FOLLOWING}`
         );
-        console.log(res)
         return {
             isSuccess: true,
             data: res.data
@@ -52,7 +50,6 @@ export const fetchEvents = async (userName: any) => {
         const res = await axios.get(
             `${GIT_BASE_URL}${USER_DETAILS}/${userName}${EVENTS}`
         );
-        console.log(res);
         return {
             isSuccess: true,
             data: res.data,
@@ -67,7 +64,6 @@ export const fetchOrgList = async (userName: any) => {
         const res = await axios.get(
             `${GIT_BASE_URL}${USER_DETAILS}/${userName}${ORG_LIST}`
         );
-        console.log(res);
         return {
             isSuccess: true,
             data: res.data,

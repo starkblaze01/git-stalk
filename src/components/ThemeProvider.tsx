@@ -2,7 +2,7 @@ import * as React from "react";
 import { ThemeProvider as JssThemeProvider } from "react-jss";
 import { BrowserRouter } from "react-router-dom";
 import RouterOutlet from "../components/RouterOutlet";
-import FooterB from './FooterB';
+import Header from './Header';
 // refer to the link below
 // https://github.com/styled-components/styled-components-experimentation/blob/master/component-libraries/shared-component-libraries.md
 class ThemeProvider extends React.PureComponent<any, any> {
@@ -17,8 +17,8 @@ class ThemeProvider extends React.PureComponent<any, any> {
     return (
       <JssThemeProvider theme={theme}>
         <BrowserRouter>
+          <Header />
           <RouterOutlet />
-          <FooterB />
         </BrowserRouter>
       </JssThemeProvider>
     );
