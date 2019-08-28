@@ -135,13 +135,28 @@ class Stalk extends React.PureComponent<any, any> {
                     </a>
                 );
             }) : null
+        const events = this.props.events ?
+            this.props.events.map((el: any) => {
+                return ((el.type === 'PullRequestEvent' || 'WatchEvent' || 'IssuesEvent' || 'IssueCommentEvent'
+                    || 'PushEvent' || 'CreateEvent' || 'PullRequestReviewCommentEvent') ?
+                    <a href={`https://github.com/${el.login}`} key={el.id}><Card.Grid
+                        style={{
+                            overflow: 'hidden',
+                            marginLeft: '2%', marginBottom: '2%'
+                        }}
+                    >
+                        {el.type}
+                    </Card.Grid>
+                    </a>
+                    : null);
+            }) : null
         const tabListData: any = {
-            events: <div>ss</div>,
+            events: <div>{events}</div>,
             organizations: <>{organization}</>,
             followers: <>{follower}</>,
             following: <>{following}</>,
         }
-        console.log(this.props.organization)
+        console.log(this.props.events)
         const { classes, userDetails: { data } } = this.props;
         return (
             <>
