@@ -15,6 +15,9 @@ export const fetchUserDetails = async (userName: any) => {
         }
     } catch (err) {
         console.log(err);
+        return {
+            isSuccess: false
+        }
     }
 }
 

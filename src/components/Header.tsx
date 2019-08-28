@@ -16,7 +16,7 @@ class Header extends React.PureComponent<any, any> {
         return (
             <Footer>
                 <div className={classes.bottom}>
-                    <div>Copyright &copy; {new Date().getFullYear()} starkblaze01</div>
+                    <a href="https://github.com/starkblaze01"><Icon type="github" style={{ fontSize: '25px' }} /></a>
                     <div>
                         Liked It<Icon type="heart" theme="twoTone" twoToneColor="#eb2f96" /><Icon type="forward" />&nbsp;
                         Star Me

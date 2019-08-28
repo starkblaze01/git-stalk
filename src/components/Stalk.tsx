@@ -50,7 +50,7 @@ class Stalk extends React.PureComponent<any, any> {
     }
     async componentDidMount() {
         const user = this.props.match.params.userId
-        console.log(user);
+        // console.log(user);
         if (user && user.length) {
             await this.props.setUserName(user)
             await this.props.getUserDetails(user)
@@ -61,7 +61,7 @@ class Stalk extends React.PureComponent<any, any> {
         }
     }
     onTabChange = (key: any, type: any) => {
-        console.log(key, type);
+        // console.log(key, type);
         this.setState({ [type]: key });
     };
 
@@ -203,7 +203,7 @@ class Stalk extends React.PureComponent<any, any> {
                 }
                 return ((el.type === 'PullRequestEvent' || 'WatchEvent' || 'IssuesEvent' || 'IssueCommentEvent'
                     || 'PushEvent' || 'CreateEvent' || 'PullRequestReviewCommentEvent' || 'PullRequestReviewEvent') ?
-                    <>{event}</>
+                    <div key={el.id}>{event}</div>
                     : null);
             }) : null
         const tabListData: any = {
@@ -227,6 +227,9 @@ class Stalk extends React.PureComponent<any, any> {
                         <Meta title={`${data.name}`} />
                         <div>{this.props.userName}</div>
                         <hr />
+                        {data.blog ? <div>Blog: <a href={data.blog}>{data.blog}</a></div> : null}
+                        {data.company ? <div>Company: {data.company}</div> : null}
+                        {data.hireable ? <div>Hireable: {data.hireable ? <>Of Course!</> : <>Sad but No!</>}</div> : null}
                         <div>Followers:{data.followers}</div>
                         <div>Following:{data.following}</div>
                         <div>Public Repos:{data.public_repos}</div>

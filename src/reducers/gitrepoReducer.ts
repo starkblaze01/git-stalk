@@ -4,6 +4,7 @@ import {
     DISABLE_ORG_LOADING, ENABLE_EVENTS_LOADING, ENABLE_FOLLOWERS_LOADING, ENABLE_FOLLOWING_LOADING, ENABLE_ORG_LOADING,
 } from '../actions/constants';
 const defaultState: any = {
+    userNotFound: true,
     loadingUser: true,
     loadingFollowers: true,
     loadingFollowing: true,

@@ -10,6 +10,7 @@ import {
 
 export const getUserDetails = (userName: any) => async (dispatch: any, getState: any) => {
     const res = await fetchUserDetails(userName);
+    console.log(res);
     dispatch({
         type: ENABLE_USER_LOADING,
     });
