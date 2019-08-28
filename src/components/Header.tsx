@@ -10,7 +10,7 @@ const styles = (theme: any) => ({
     }
 })
 
-class FooterB extends React.PureComponent<any, any> {
+class Header extends React.PureComponent<any, any> {
     render() {
         const { classes } = this.props;
         return (
@@ -28,5 +28,5 @@ class FooterB extends React.PureComponent<any, any> {
     }
 }
 
-const FooterBStyled = injectSheet(styles)(FooterB);
-export default FooterBStyled;
+const HeaderStyled = injectSheet(styles)(Header);
+export default HeaderStyled;

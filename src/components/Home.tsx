@@ -1,6 +1,6 @@
 import * as React from "react";
 import injectSheet from "react-jss";
-import { Typography, Switch, Icon, Input } from "antd";
+import { Typography, Input } from "antd";
 import { getUserDetails, setUserName } from '../actions/gitrepoAction';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -17,32 +17,9 @@ const styles = (theme: any) => ({
     margin: 'auto',
     height: "100vh",
     width: '100%',
-    paddingTop: "10%"
+    paddingTop: "10%",
+    position: 'fixed',
   },
-  switch: {
-    display: "flex",
-    width: "100%",
-    justifyContent: "flex-end",
-    position: "fixed",
-    alignItems: "center",
-    alignContent: "center",
-    marginTop: "10px",
-    zIndex: 2,
-  },
-  cards: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '70%',
-    margin: 'auto',
-    color: '#0057e3',
-  },
-  card: {
-    height: '300px',
-    width: '250px',
-    border: '1px solid #8f8f8f',
-    boxShadow: '5px 5px 5px 5px',
-    borderRadius: '10px 10px',
-  }
 });
 const { Title } = Typography;
 
@@ -68,15 +45,6 @@ class Home extends React.PureComponent<any, any> {
     const { Search } = Input;
     return (
       <>
-        <div className={classes.switch}>
-          <Switch
-            checkedChildren={<Icon type="smile" />}
-            unCheckedChildren={<Icon type="smile" theme="filled" />}
-            onChange={() => {
-              this.setState({ mode: !this.state.mode });
-            }}
-          />
-        </div>
         <div className={classes.align}>
           <Title>Check What's your peers are up to!</Title>
           <Octocatgif />
