@@ -20,9 +20,6 @@ export const getUserDetails = (userName: any) => async (dispatch: any, getState:
             type: GET_USER_DETAILS,
             data: res,
         });
-        dispatch({
-            type: DISABLE_USER_LOADING,
-        });
         dispatch(
             getEvents(userName)
         );
@@ -35,6 +32,9 @@ export const getUserDetails = (userName: any) => async (dispatch: any, getState:
         dispatch(
             getOrganization(userName)
         );
+        dispatch({
+            type: DISABLE_USER_LOADING,
+        });
     } else if (!res.isSuccess) {
         dispatch({
             type: USER_NOT_FOUND,

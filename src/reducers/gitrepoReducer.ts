@@ -31,6 +31,7 @@ export default function (state: any = defaultState, action: any) {
             return {
                 ...state,
                 loadingUser: true,
+                userDetails: '',
             }
         }
         case DISABLE_USER_LOADING: {
@@ -80,24 +81,28 @@ export default function (state: any = defaultState, action: any) {
             return {
                 ...state,
                 loadingEvents: true,
+                events: [],
             }
         }
         case ENABLE_FOLLOWERS_LOADING: {
             return {
                 ...state,
                 loadingFollowers: true,
+                follower: [],
             }
         }
         case ENABLE_FOLLOWING_LOADING: {
             return {
                 ...state,
                 loadingFollowing: true,
+                following: [],
             }
         }
         case ENABLE_ORG_LOADING: {
             return {
                 ...state,
                 loadingOrg: true,
+                organization: [],
             }
         }
         case DISABLE_EVENTS_LOADING: {

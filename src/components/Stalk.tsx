@@ -52,7 +52,6 @@ class Stalk extends React.PureComponent<any, any> {
         // console.log(user);
         if (user && user.length) {
             await this.props.setUserName(user);
-            await this.props.getUserDetails(user)
         }
     }
 
