@@ -2,8 +2,10 @@ import {
     ENABLE_USER_LOADING, DISABLE_USER_LOADING, GET_USER_DETAILS, SET_USER_NAME, GET_EVENTS, GET_FOLLOWERS,
     GET_FOLLOWING, GET_ORG, DISABLE_EVENTS_LOADING, DISABLE_FOLLOWERS_LOADING, DISABLE_FOLLOWING_LOADING,
     DISABLE_ORG_LOADING, ENABLE_EVENTS_LOADING, ENABLE_FOLLOWERS_LOADING, ENABLE_FOLLOWING_LOADING, ENABLE_ORG_LOADING,
+    USER_NOT_FOUND,
 } from '../actions/constants';
 const defaultState: any = {
+    userNotFound: true,
     loadingUser: true,
     loadingFollowers: true,
     loadingFollowing: true,
@@ -19,16 +21,24 @@ const defaultState: any = {
 
 export default function (state: any = defaultState, action: any) {
     switch (action.type) {
+        case USER_NOT_FOUND: {
+            return {
+                ...state,
+                userNotFound: true,
+            }
+        }
         case ENABLE_USER_LOADING: {
             return {
                 ...state,
                 loadingUser: true,
+                userDetails: '',
             }
         }
         case DISABLE_USER_LOADING: {
             return {
                 ...state,
                 loadingUser: false,
+                userNotFound: false,
             }
         }
         case GET_USER_DETAILS: {
@@ -71,24 +81,28 @@ export default function (state: any = defaultState, action: any) {
             return {
                 ...state,
                 loadingEvents: true,
+                events: [],
             }
         }
         case ENABLE_FOLLOWERS_LOADING: {
             return {
                 ...state,
                 loadingFollowers: true,
+                follower: [],
             }
         }
         case ENABLE_FOLLOWING_LOADING: {
             return {
                 ...state,
                 loadingFollowing: true,
+                following: [],
             }
         }
         case ENABLE_ORG_LOADING: {
             return {
                 ...state,
                 loadingOrg: true,
+                organization: [],
             }
         }
         case DISABLE_EVENTS_LOADING: {

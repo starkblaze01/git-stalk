@@ -19,6 +19,7 @@ const styles = (theme: any) => ({
     width: '100%',
     paddingTop: "10%",
     position: 'fixed',
+    background: 'linear-gradient(45deg, black, transparent)',
   },
 });
 const { Title } = Typography;
@@ -30,11 +31,10 @@ class Home extends React.PureComponent<any, any> {
   }
 
   async stalkUser(user: any) {
-    console.log(user);
-    console.log(this.props);
-    this.props.history.push(`/stalk/${user}`);
+    // console.log(user);
+    // console.log(this.props);
     await this.props.setUserName(user);
-    await this.props.getUserDetails(user);
+    !this.props.loadingUser ? this.props.history.push(`/stalk/${user}`) : console.log('User Not Found');
   }
 
   state: any = {
@@ -64,7 +64,8 @@ class Home extends React.PureComponent<any, any> {
 
 const mapStateToProps = ({ gitrepoReducer }: { gitrepoReducer: any }) => ({
   userDetails: gitrepoReducer.userDetails,
-  loadingUsers: gitrepoReducer.loadingUsers,
+  loadingUser: gitrepoReducer.loadingUser,
+  userNotFound: gitrepoReducer.userNotFound,
 });
 
 const mapDispatchToProps = (dispatch: any) => (bindActionCreators({
