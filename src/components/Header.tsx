@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Tooltip } from 'antd';
 import injectSheet from 'react-jss';
 const { Footer } = Layout;
 
@@ -16,7 +16,9 @@ class Header extends React.PureComponent<any, any> {
         return (
             <Footer>
                 <div className={classes.bottom}>
-                    <a href="https://github.com/starkblaze01"><Icon type="github" style={{ fontSize: '25px' }} /></a>
+                    <a href="https://github.com/starkblaze01"><Tooltip title="Checkout Other Repos on GitHub" placement="bottomRight"><Icon type="github" style={{ fontSize: '25px' }} />
+                    </Tooltip>
+                    </a>
                     <div>
                         Liked It<Icon type="heart" theme="twoTone" twoToneColor="#eb2f96" /><Icon type="forward" />&nbsp;
                         Star Me

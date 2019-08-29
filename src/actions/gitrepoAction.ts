@@ -1,7 +1,8 @@
 import {
     ENABLE_USER_LOADING, DISABLE_USER_LOADING, GET_USER_DETAILS, SET_USER_NAME, GET_FOLLOWERS,
     GET_FOLLOWING, ENABLE_FOLLOWERS_LOADING, ENABLE_FOLLOWING_LOADING, DISABLE_FOLLOWERS_LOADING,
-    DISABLE_FOLLOWING_LOADING, ENABLE_EVENTS_LOADING, DISABLE_EVENTS_LOADING, GET_EVENTS, ENABLE_ORG_LOADING, GET_ORG, DISABLE_ORG_LOADING,
+    DISABLE_FOLLOWING_LOADING, ENABLE_EVENTS_LOADING, DISABLE_EVENTS_LOADING, GET_EVENTS, ENABLE_ORG_LOADING,
+    GET_ORG, DISABLE_ORG_LOADING, USER_NOT_FOUND
 } from './constants';
 import {
     fetchUserDetails, fetchEvents, fetchOrgList, fetchFollowers,
@@ -10,17 +11,35 @@ import {
 
 export const getUserDetails = (userName: any) => async (dispatch: any, getState: any) => {
     const res = await fetchUserDetails(userName);
-    console.log(res);
-    dispatch({
-        type: ENABLE_USER_LOADING,
-    });
-    dispatch({
-        type: GET_USER_DETAILS,
-        data: res,
-    });
-    dispatch({
-        type: DISABLE_USER_LOADING,
-    })
+    // console.log(res);
+    if (res.isSuccess) {
+        dispatch({
+            type: ENABLE_USER_LOADING,
+        });
+        dispatch({
+            type: GET_USER_DETAILS,
+            data: res,
+        });
+        dispatch({
+            type: DISABLE_USER_LOADING,
+        });
+        dispatch(
+            getEvents(userName)
+        );
+        dispatch(
+            getFollowers(userName)
+        );
+        dispatch(
+            getFollowing(userName)
+        );
+        dispatch(
+            getOrganization(userName)
+        );
+    } else if (!res.isSuccess) {
+        dispatch({
+            type: USER_NOT_FOUND,
+        });
+    }
 }
 
 export const setUserName = (user: any) => async (dispatch: any, getState: any) => {
@@ -28,6 +47,9 @@ export const setUserName = (user: any) => async (dispatch: any, getState: any) =
         type: SET_USER_NAME,
         data: user,
     });
+    dispatch(
+        getUserDetails(user)
+    );
 }
 
 export const getEvents = (userName: any) => async (dispatch: any, getState: any) => {
