@@ -17,5 +17,11 @@ Love stalking GitHub Profile. Then try this out!!
 ## Why I made this?
 Because I wanted to explore GitHub API and have fun with it. And also I was inspired by this awesome [telegram bot](https://github.com/aashutoshrathi/git-profiler-bot) made by Aashutosh Rathi](https://github.com/aashutoshrathi) for which he has to pay monthly bill of 1 INR because of me. 
 
-## Thanks:
+## Thanks
 [GitHub API](https://developer.github.com/v3/)
+
+### Author:
+[Mayank Pathela](https://github.com/starkblaze01)
+
+### What to Contribute?
+Create an Issue [here](https://github.com/starkblaze01/git-stalk/issues/new)
