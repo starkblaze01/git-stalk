@@ -21,7 +21,7 @@ Because I wanted to explore GitHub API and have fun with it. And also I was insp
 [GitHub API](https://developer.github.com/v3/)
 
 ### Author:
-[Mayank Pathela](https://github.com/starkblaze01)
+[Mayank Pathela](https://github.com/starkblaze01) - [Website](https://starkblaze01.netlify.com)
 
 ### What to Contribute?
 Create an Issue [here](https://github.com/starkblaze01/git-stalk/issues/new)
