@@ -18,7 +18,7 @@ const styles = (theme: any) => ({
     height: "100vh",
     width: '100%',
     paddingTop: "10%",
-    position: 'fixed',
+//     position: 'fixed',
     background: 'linear-gradient(45deg, black, transparent)',
   },
 });
