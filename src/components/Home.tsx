@@ -34,7 +34,7 @@ class Home extends React.PureComponent<any, any> {
     // console.log(user);
     // console.log(this.props);
     await this.props.setUserName(user);
-    !this.props.loadingUser ? this.props.history.push(`/stalk/${user}`) : console.log('User Not Found');
+    this.props.history.push(`/stalk/${user}`)
   }
 
   state: any = {
