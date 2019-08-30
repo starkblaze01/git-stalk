@@ -15,7 +15,7 @@ Love stalking GitHub Profile. Then try this out!!
 ```npm run test```
 
 ## Why I made this?
-Because I wanted to explore GitHub API and have fun with it. And also I was inspired by this awesome [telegram bot](https://github.com/aashutoshrathi/git-profiler-bot) made by Aashutosh Rathi](https://github.com/aashutoshrathi) for which he has to pay monthly bill of 1 INR because of me. 
+Because I wanted to explore GitHub API and have fun with it. And also I was inspired by this awesome [telegram bot](https://github.com/aashutoshrathi/git-profiler-bot) made by [Aashutosh Rathi](https://github.com/aashutoshrathi) for which he has to pay monthly bill of 1 INR because of me. 
 
 ## Thanks
 [GitHub API](https://developer.github.com/v3/)
