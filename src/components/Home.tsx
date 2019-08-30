@@ -50,7 +50,7 @@ class Home extends React.PureComponent<any, any> {
           <Octocatgif />
           <div>
             <Search
-              placeholder="Enter GitHub User Name"
+              placeholder="Enter GitHub UserName"
               enterButton="Stalk"
               size="large"
               onSearch={user => this.stalkUser(user)}
