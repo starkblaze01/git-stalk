@@ -18,7 +18,7 @@ const styles = (theme: any) => ({
     height: "100vh",
     width: '100%',
     paddingTop: "10%",
-//     position: 'fixed',
+    //     position: 'fixed',
     background: 'linear-gradient(45deg, black, transparent)',
   },
 });
@@ -50,7 +50,7 @@ class Home extends React.PureComponent<any, any> {
           <Octocatgif />
           <div>
             <Search
-              placeholder="Enter User Name"
+              placeholder="Enter GitHub User Name"
               enterButton="Stalk"
               size="large"
               onSearch={user => this.stalkUser(user)}

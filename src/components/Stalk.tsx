@@ -214,7 +214,7 @@ class Stalk extends React.PureComponent<any, any> {
                 <>
                     <div>
                         <Input.Search
-                            placeholder="Enter User Name"
+                            placeholder="Enter GitHub User Name"
                             enterButton="Stalk"
                             size="large"
                             style={{
@@ -232,7 +232,7 @@ class Stalk extends React.PureComponent<any, any> {
             <>
                 <div>
                     <Input.Search
-                        placeholder="Enter User Name"
+                        placeholder="Enter GitHub User Name"
                         enterButton="Stalk"
                         size="large"
                         onSearch={async (user) =>
