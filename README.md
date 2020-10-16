@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/07896d3f-b2c5-439b-98da-014f743e3d02/deploy-status)](https://app.netlify.com/sites/github-profile-stalker/deploys)
 
 # git-stalk
-Love stalking GitHub Profile ? Check what you peers are upto😈
+Love stalking GitHub Profile? Check what your peers are upto😈
 
 --------------------------------------------
 ## How to Start the Project
