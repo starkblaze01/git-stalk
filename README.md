@@ -1,9 +1,21 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/07896d3f-b2c5-439b-98da-014f743e3d02/deploy-status)](https://app.netlify.com/sites/github-profile-stalker/deploys)
+<div align="center">
+
 
 # git-stalk
 Love stalking GitHub Profile? Check what your peers are upto😈
 
+ </div>
+
 --------------------------------------------
+## Build
+[![Netlify Status](https://api.netlify.com/api/v1/badges/07896d3f-b2c5-439b-98da-014f743e3d02/deploy-status)](https://app.netlify.com/sites/github-profile-stalker/deploys)
+
+## Blog
+<a href="https://dev.to/starkblaze01/github-profile-stalker-3fl9" target="_blank">
+  <img src=https://img.shields.io/badge/dev.to-%2308090A.svg?&style=for-the-badge&logo=dev.to&logoColor=white alt=devto style="margin-bottom: 5px;" />
+</a>
+
+
 ## How to Start the Project
 - ``` npm i```
 -  Create a .env in the root folder and Set Environment Variable: ```REACT_APP_OAUTH_TOKEN = Your GitHub OAUTH Token```
@@ -13,13 +25,11 @@ Love stalking GitHub Profile? Check what your peers are upto😈
 ## To Create Optimized Build
 ```npm run build```
 
-## To run tests
-```npm run test```
 
 ## Why I made this?
 Because I wanted to explore GitHub API and have fun with it. And also I was inspired by this awesome [telegram bot](https://github.com/aashutoshrathi/git-profiler-bot) made by [Aashutosh Rathi](https://github.com/aashutoshrathi) for which he had to pay monthly bill of 1 INR because of me😓. 
 
-## Thanks
+## Special Thanks
 [GitHub API](https://developer.github.com/v3/)
 
 ### Author:
